@@ -50,12 +50,6 @@ handle_error() {
     exit "$error_code"
 }
 
-# Function to create placeholder in S3
-create_placeholder_in_s3() {
-    local s3_path="$1"
-    aws s3api put-object --bucket $s3_bucket --key "$s3_path" --content-length 0 >/dev/null 2>&1
-}
-
 # Log file for the entire process
 today_date=$(date +'%Y-%m-%d')
 main_log_file="$dir_path/distcp_process_$today_date.log"
